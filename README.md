@@ -6,3 +6,6 @@ Im using BMV-702 and a simple 3g/wifi router to make my yacht report battery sta
 
 Example thingspeak page: https://thingspeak.com/channels/91575
 
+Connector on BMV-702 (VE.Direct) is JST-PH: https://www.sparkfun.com/products/9916
+
+
