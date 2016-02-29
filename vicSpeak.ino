@@ -47,36 +47,38 @@ ESP8266WiFiMulti WiFiMulti;
 #define KEYWORDS 30
 
 String keywords[KEYWORDS] = {
-  "PID ", 
-  "V ", 
-  "VS ", 
-  "I ", 
-  "P ", 
-  "CE ", 
-  "SOC ", 
-  "TTG ", 
-  "Alarm ", 
-  "Relay ", 
-  "AR ", 
-  "BMV ", 
-  "FW ", 
-  "Checksum ", 
-  "H1 ", 
-  "H2 ", 
-  "H3 ", 
-  "H4 ", 
-  "H5 ", 
-  "H6 ", 
-  "H7 ", 
-  "H8 ", 
-  "H9 ", 
-  "H10 ", 
-  "H11 ", 
-  "H12 ", 
-  "H15 ", 
-  "H16 ", 
-  "H17 ", 
-  "H18 "
+"PID\t", 
+"V\t", 
+"VS\t", 
+"I\t", 
+"P\t", 
+"CE\t", 
+"SOC\t", 
+"TTG\t", 
+"Alarm\t", 
+"Relay\t", 
+"AR\t", 
+"BMV\t", 
+"FW\t", 
+"Checksum\t", 
+"H1\t", 
+"H2\t", 
+"H3\t", 
+"H4\t", 
+"H5\t", 
+"H6\t", 
+"H7\t", 
+"H8\t", 
+"H9\t", 
+"H10\t", 
+"H11\t", 
+"H12\t", 
+"H15\t", 
+"H16\t", 
+"H17\t", 
+"H18\t"
+
+
 };
 
 String values[KEYWORDS];
@@ -151,8 +153,6 @@ void callURL(String host, String uri)
 
 void loop() {
 
-
-
   // If we have all data, send it to thingspeak
   if(values[V].length() && 
      values[VS].length() && 
@@ -175,7 +175,8 @@ void loop() {
 
 
   // If we dont have all the data, keep looking for it
-  String s = Serial.readString();
+  String s = Serial.readStringUntil(10);
+
   if(s.length()) {
     for(int i=0;i<KEYWORDS;i++)
     {
@@ -183,7 +184,7 @@ void loop() {
 
       if(s.substring(0,k.length()) == k)
       {
-        String t = s.substring(k.length()+1);
+        String t = s.substring(k.length());
         t.trim();
         
         Serial.println("Got " + t + " as value for " + k + ". Saving it!");
