@@ -7,5 +7,9 @@ Im using BMV-702 and a simple 3g/wifi router to make my yacht report battery sta
 Example thingspeak page: https://thingspeak.com/channels/91575
 
 Connector on BMV-702 (VE.Direct) is JST-PH: https://www.sparkfun.com/products/9916
-
+Pinout on VE.Direct:
+1. 3.3 volt (I dont dare using this to power the ESP8266, tell me if you tried! :-)
+2. TX
+3. RX
+4. GND
 
